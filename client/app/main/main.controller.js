@@ -8,11 +8,8 @@ angular.module('ebolaAppApp')
       $scope.patients = data;
     });
 
-    // $http.destroy('/api/patients/' + ).success(function(data) {
-    //   $scope.patients = data;
-    // });
     //
-    // $http.update('/api/patients').success(function(data) {
+    // $http.put('/api/patients').success(function(data) {
     //   $scope.patients = data;
     // });
 
@@ -25,7 +22,7 @@ angular.module('ebolaAppApp')
     };
 
     $scope.deletePost = function(patientId){
-      $http.delete('/api/patients/' + patientId).success(function(data) {
+      $http.delete('/api/patients/' + patientId).success(function() {
         $scope.patients = _.reject($scope.patients, { _id: patientId });
       });
     };

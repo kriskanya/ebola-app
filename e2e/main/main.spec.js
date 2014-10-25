@@ -9,8 +9,15 @@ describe('Main View', function() {
   });
 
   it('should include jumbotron with correct data', function() {
-    expect(page.h1El.getText()).toBe('\'Allo, \'Allo!');
-    expect(page.imgEl.getAttribute('src')).toMatch(/assets\/images\/yeoman.png$/);
-    expect(page.imgEl.getAttribute('alt')).toBe('I\'m Yeoman');
+    element(by.model('name')).sendKeys("Bob Smith");
+    element(by.model('city')).sendKeys("San Antonio");
+
+    element(by.id('newPatientSubmitButton')).click();
+
+    expect(element(by.binding('p.name')).getText()).
+      toEqual('Name: Bob Smith');
+    // expect(page.h1El.getText()).toBe('Ebola Patient App');
+    // expect(page.imgEl.getAttribute('src')).toMatch(/assets\/images\/yeoman.png$/);
+    // expect(page.imgEl.getAttribute('alt')).toBe('I\'m Yeoman');
   });
 });
