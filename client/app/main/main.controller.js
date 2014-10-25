@@ -2,16 +2,32 @@
 
 angular.module('ebolaAppApp')
   .controller('MainCtrl', function ($scope, $http) {
-    // $scope.dogs = [{'name': 'fido', 'breed': 'mutt'}, {'name': 'dog2', 'breed': 'golden'}];
+    $scope.patients = {};
 
-    $http.get('assets/patients.json').success(function(data) {
+    $http.get('/api/patients').success(function(data) {
       $scope.patients = data;
     });
+
+    // $http.destroy('/api/patients/' + ).success(function(data) {
+    //   $scope.patients = data;
+    // });
+    //
+    // $http.update('/api/patients').success(function(data) {
+    //   $scope.patients = data;
+    // });
 
     $scope.orderProp = 'name';
 
     $scope.addPost = function(){
-      $scope.patients.push({ name: $scope.name, city: $scope.city, infectionDate: $scope.infectionDate });
+      $http.post('/api/patients', { name: $scope.name, city: $scope.city, infectionDate: $scope.infectionDate }).success(function(data) {
+        $scope.patients.push(data);
+      });
+    };
+
+    $scope.deletePost = function(patientId){
+      $http.delete('/api/patients/' + patientId).success(function(data) {
+        $scope.patients = _.reject($scope.patients, { _id: patientId });
+      });
     };
 
   });

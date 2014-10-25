@@ -15,7 +15,7 @@
         </div>
 
         <div class="newPatient">
-          Add a new patient (front-end only):
+          Add a new patient (stored in MongoDB):
           <form ng-submit="addPost()">
             <input type="text" placeholder="name" ng-model="name"></input>
             <input type="text" placeholder="city" ng-model="city"></input>
@@ -31,6 +31,7 @@
             <p>Name: {{p.name}}</p>
             <p>City: {{p.city}}</p>
             <p>Infection Date: {{p.infectionDate | date : format : longDate }}</p>
+            <a ng-click="deletePost(p._id)">&#x2716</a>
           </li>
         </ul>
       </div>
