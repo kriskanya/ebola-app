@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Bob Smith",
+        "city": "Houston",
+        "infectionDate": 1414375948024
+    },
+    {
+        "name": "Kim Jones",
+        "city": "Dallas",
+        "infectionDate": 1413375948024
+    },
+    {
+        "name": "Blake Blackshear",
+        "city": "San Antonio",
+        "infectionDate": 1411375948024
+    },
+    {
+        "name": "Kristian Kanya",
+        "city": "Austin",
+        "infectionDate": 1412375948024
+    }
+]

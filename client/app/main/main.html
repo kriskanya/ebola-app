@@ -1,0 +1,39 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        Search: <input ng-model="query">
+
+        <div class="sort">
+          Sort by:
+          <select ng-model="orderProp">
+            <option value="name">Alphabetical By Name</option>
+            <option value="location">Alphabetical By Location</option>
+            <option value="infectionDate">Date</option>
+          </select>
+        </div>
+
+        <div class="newPatient">
+          Add a new patient (front-end only):
+          <form ng-submit="addPost()">
+            <input type="text" placeholder="name" ng-model="name"></input>
+            <input type="text" placeholder="city" ng-model="city"></input>
+            <input type="date" ng-model="infectionDate"></input>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+      </div>
+      <div class="col-md-10">
+        <ul class="patients">
+          <li ng-repeat="p in patients | filter:query | orderBy:orderProp">
+            <p>Name: {{p.name}}</p>
+            <p>City: {{p.city}}</p>
+            <p>Infection Date: {{p.infectionDate | date : format : longDate }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
