@@ -8,8 +8,13 @@ angular.module('ebolaAppApp', [
   'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider
-      .otherwise('/');
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('edit', {
+        url: "/edit/:patientId",
+        templateUrl: "main/edit.html"
+      });
 
     $locationProvider.html5Mode(true);
   });
