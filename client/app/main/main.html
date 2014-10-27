@@ -51,11 +51,11 @@
             <th class="danger">Delete?</th>
           </tr>
 
-          <tr ng-repeat="p in patients | filter:query | orderBy:orderProp">
+          <tr class="allPatients" ng-repeat="p in patients | filter:query | orderBy:orderProp">
             <td>{{p.name}}</td>
             <td>{{p.city}}</td>
             <td>{{p.infectionDate | date : format : longDate }}</td>
-            <td><a ng-click="deletePost(p._id)">&#x2716</a></td>
+            <td><a class="deletePatient" ng-click="deletePost(p._id)">X</a></td>
           </tr>
         </table>
       </div>
