@@ -30,8 +30,7 @@
 }
 
 .newPatient {
-  margin-top: 30px;
-  margin-left: 10px;
+  margin: 30px 0px 20px 10px;
 
   form {
     margin-top: 10px;
@@ -43,4 +42,17 @@
 .sort {
   margin-top: 15px;
   margin-left: 10px;
+}
+
+ul
+{
+  list-style-type: none;
+}
+
+.controlBox {
+  background-color: lightgray;
+}
+
+.searchBox {
+  margin-top: 20px;
 }

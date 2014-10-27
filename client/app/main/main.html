@@ -1,39 +1,63 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-  <h1> Ebola Patient App </h1>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-2">
-        Search: <input ng-model="query">
+      <div class="controlBox col-md-3">
+        <div class="col-md-11">
+          <div class="searchBox">
+            <input class="form-control" ng-model="query" placeholder="Search">
+          </div>
+        </div>
 
-        <div class="sort">
-          Sort by:
-          <select ng-model="orderProp">
+        <div class="sort col-md-8">
+          <select class="form-control" ng-model="orderProp">
             <option value="name">Alphabetical By Name</option>
-            <option value="location">Alphabetical By Location</option>
-            <option value="infectionDate">Date</option>
+            <option value="city">Alphabetical By City</option>
+            <option value="infectionDate">Date (Oldes to Newest)</option>
           </select>
         </div>
 
-        <div class="newPatient">
-          Add a new patient (stored in MongoDB):
-          <form ng-submit="addPost()">
-            <input type="text" placeholder="name" ng-model="name"></input>
-            <input type="text" placeholder="city" ng-model="city"></input>
-            <input type="date" ng-model="infectionDate"></input>
-            <button type="submit" id="newPatientSubmitButton">Submit</button>
+        <div class="newPatient col-md-12">
+          Add a New Patient (stored in MongoDB):
+          <form class="form-horizontal" role="form" ng-submit="addPost()">
+            <div class="form-group">
+              <label for="patientName" class="col-sm-3 control-label">Name</label>
+              <div class="col-sm-9">
+                <input type="text" id="patientName" ng-model="name"></input>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="patientCity" class="col-sm-3 control-label">Patient City</label>
+              <div class="col-sm-9">
+                <input type="text" id="patientCity" ng-model="city"></input>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="infectionDate" class="col-sm-3 control-label">Infection Date</label>
+              <div class="col-sm-9">
+                <input type="date" id="infectionDate" ng-model="infectionDate"></input>
+              </div>
+            </div>
+            <button class="btn btn-default" type="submit" id="newPatientSubmitButton">Submit</button>
           </form>
         </div>
 
       </div>
-      <div class="col-md-10">
-        <ul class="patients">
-          <li ng-repeat="p in patients | filter:query | orderBy:orderProp">
-            <p>Name: {{p.name}}</p>
-            <p>City: {{p.city}}</p>
-            <p>Infection Date: {{p.infectionDate | date : format : longDate }}</p>
-            <a ng-click="deletePost(p._id)">&#x2716</a>
-          </li>
-        </ul>
+      <div class="col-md-9">
+        <table class="table table-striped">
+          <tr class="success">
+            <th>Name</th>
+            <th>City</th>
+            <th>Infection Date</th>
+            <th class="danger">Delete?</th>
+          </tr>
+
+          <tr ng-repeat="p in patients | filter:query | orderBy:orderProp">
+            <td>{{p.name}}</td>
+            <td>{{p.city}}</td>
+            <td>{{p.infectionDate | date : format : longDate }}</td>
+            <td><a ng-click="deletePost(p._id)">&#x2716</a></td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
