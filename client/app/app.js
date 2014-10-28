@@ -12,8 +12,9 @@ angular.module('ebolaAppApp', [
 
     $stateProvider
       .state('edit', {
-        url: "/edit/:patientId",
-        templateUrl: "main/edit.html"
+        url: '/edit/:patientId',
+        templateUrl: 'app/main/edit.html',
+        controller: 'MainCtrl'
       });
 
     $locationProvider.html5Mode(true);
